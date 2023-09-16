@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Pet API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/pet": {
+      "get": {
+        "summary": "Retrieve a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "head": {
+        "summary": "Retrieve headers for a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "connect": {
+        "summary": "Connect to a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "options": {
+        "summary": "Retrieve options for a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "trace": {
+        "summary": "Trace a pet request",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Partially update a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/queryPet": {
+      "post": {
+        "summary": "Query a pet",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "outDir": "./dist",
+    "esModuleInterop": true
+  },
+  "include": ["./customMatcher.d.ts", "./**/*.ts", "index.ts", "foo.js"],
+  "exclude": ["node_modules"]
+}
