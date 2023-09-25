@@ -42,7 +42,7 @@ const getSpecsheet = async (address: string): Promise<Record<string, any>> => {
   }
 };
 
-export const APISweeperSetup = async (
+export const SpecSpySetup = async (
   specAddress: string
 ): Promise<Record<string, any>> => {
   try {

@@ -6,17 +6,24 @@ import { load } from "js-yaml";
 // Using js-yaml to load the YAML file
 const swaggerDocument = load(readFileSync("./testSwagger.yaml", "utf8"));
 
-export const startServer = () => {
+export const startServer = (isYAML: boolean = false) => {
   const app = express();
   const port = 3000;
 
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-  // expose the swagger.json file
-  app.get("/swagger.json", (req, res) => {
-    res.setHeader("Content-Type", "application/json");
-    res.send(JSON.stringify(swaggerDocument));
-  });
+  // expose the swagger file
+  if (isYAML) {
+    app.get("/swagger.yaml", (req, res) => {
+      res.setHeader("Content-Type", "application/yaml");
+      res.send(readFileSync("./testSwagger.yaml", "utf8"));
+    });
+  } else {
+    app.get("/swagger.json", (req, res) => {
+      res.setHeader("Content-Type", "application/json");
+      res.send(JSON.stringify(swaggerDocument));
+    });
+  }
 
   app.get("/pet", (req, res) => res.send("GET /pet"));
   app.head("/pet", (req, res) => res.send("HEAD /pet"));
@@ -31,7 +38,7 @@ export const startServer = () => {
 
   const server = app.listen(port, () => {
     console.log(
-      `APISweeper internal tests' server running at http://localhost:${port}`
+      `SpecSpy internal tests' server running at http://localhost:${port}`
     );
   });
 

@@ -1,5 +1,5 @@
 import * as testFunction from "./testFunctions";
-import { APISweeperSetup } from "./index";
+import { SpecSpySetup } from "./index";
 import { startServer } from "./testServer";
 import { Server, IncomingMessage, ServerResponse } from "http";
 
@@ -24,7 +24,31 @@ describe("Function tests", () => {
 describe("JSON API url", () => {
   beforeAll(async () => {
     server = startServer();
-    spec = await APISweeperSetup("http://localhost:3000/swagger.json");
+    spec = await SpecSpySetup("http://localhost:3000/swagger.json");
+  });
+
+  afterAll(() => {
+    server.close();
+  });
+
+  test("test functions are in spec ", () => {
+    expect(testFunction.getPet).toBeApiIn(spec);
+    expect(testFunction.headPet).toBeApiIn(spec);
+    expect(testFunction.postPet).toBeApiIn(spec);
+    expect(testFunction.putPet).toBeApiIn(spec);
+    expect(testFunction.deletePet).toBeApiIn(spec);
+    expect(testFunction.connectPet).toBeApiIn(spec);
+    expect(testFunction.optionsPet).toBeApiIn(spec);
+    expect(testFunction.tracePet).toBeApiIn(spec);
+    expect(testFunction.patchPet).toBeApiIn(spec);
+    expect(testFunction.queryPet).toBeApiIn(spec);
+  });
+});
+
+describe("YAML API url", () => {
+  beforeAll(async () => {
+    server = startServer(true);
+    spec = await SpecSpySetup("http://localhost:3000/swagger.yaml");
   });
 
   afterAll(() => {
