@@ -3,8 +3,9 @@
     "target": "ES2020",
     "module": "ESNext",
     "outDir": "./dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["jest"]
   },
-  "include": ["./customMatcher.d.ts", "./**/*.ts", "index.ts", "foo.js"],
+  "include": ["./customMatcher.d.ts", "./**/*.ts", "src/index.ts"],
   "exclude": ["node_modules"]
 }

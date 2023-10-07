@@ -1,6 +1,7 @@
-import * as testFunction from "./testFunctions";
-import { SpecSpySetup } from "./index";
-import { startServer } from "./testServer";
+import "../src/index";
+import * as testFunction from "./fixtures/testFunctions";
+import { SpecSpySetup } from "../src/utils";
+import { startServer } from "./fixtures/testServer";
 import { Server, IncomingMessage, ServerResponse } from "http";
 
 let spec: Object;
