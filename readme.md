@@ -26,14 +26,6 @@ npm install spec-spy
 
 ## Usage
 
-### Setup Spec-Spy in Your Jest Environment
-
-First, import Spec-Spy in your Jest setup file:
-
-```typescript
-import * as specSpy from "spec-spy";
-```
-
 ### Use in Tests
 
 Here's an example of how to use Spec-Spy in your Jest tests:
