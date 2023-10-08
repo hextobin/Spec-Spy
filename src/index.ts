@@ -1,3 +1,22 @@
+export { SpecSpySetup } from "./utils";
+
+// Extend the global TypeScript declarations
+declare global {
+  // Extend the Jest global namespace
+  namespace jest {
+    // Extend Jest's Matchers interface
+    interface Matchers<R> {
+      /**
+       * Custom Jest matcher to verify if a given function is defined as an API
+       * in a provided spec object.
+       * @param spec - The spec object against which to check the function
+       * @returns The result of the match (passed or failed)
+       */
+      toBeApiIn(spec: Object): R;
+    }
+  }
+}
+
 expect.extend({
   // Custom Jest matcher function for API specification
   toBeApiIn(received: Function, spec: Record<string, any>) {

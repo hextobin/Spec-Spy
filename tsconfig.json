@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
+    "target": "ES2015",
+    "module": "CommonJS",
+    "sourceMap": true,
     "outDir": "./dist",
-    "esModuleInterop": true,
-    "types": ["jest"]
+    "noImplicitAny": true,
+    "declaration": true,
+    "esModuleInterop": true
   },
-  "include": ["./customMatcher.d.ts", "./**/*.ts", "src/index.ts"],
+  "include": ["./src/index.ts", "./src/utils.ts"],
   "exclude": ["node_modules"]
 }

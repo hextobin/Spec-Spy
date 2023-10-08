@@ -1,66 +1,89 @@
-# SpecSpy: Your Friendly Neighborhood Swagger Watchdog 🐾
+# SpecSpy
 
 ## Overview
 
-Welcome to SpecSpy! This is your go-to utility for making sure your frontend calls and your Swagger or OpenAPI specs are BFFs. 🤝 Written in TypeScript, it's like the spellchecker for your API calls.
+SpecSpy is a testing utility that extends Jest to provide custom matchers for API specification testing. With SpecSpy, you can easily validate that your functions match an API spec as described in Swagger/OpenAPI documents. The library supports both JSON and YAML formats.
 
 ## Features
 
-- 📚 **Type Safety**: Goodbye type errors, hello TypeScript!
-- 🤖 **Swagger/OpenAPI Compatible**: Whether you're a YAML Yoda or a JSON Jedi, we've got you covered.
-- 🎭 **Custom Jest Matchers**: Make your test suites read like Shakespearean drama (but easier to understand).
-- 🌍 **HTTP/HTTPS**: We speak both dialects.
+- Validate functions against Swagger/OpenAPI specs.
+- Supports both JSON and YAML Swagger/OpenAPI documents.
+- Easy to integrate with Jest.
+- Provides custom Jest matcher for API specification validation.
 
 ## Installation
 
-Let's kick things off with some essentials:
+To install SpecSpy, run the following command in your terminal:
 
 ```bash
-npm install jest typescript js-yaml
+npm install specspy
 ```
 
 ## Usage
 
-### Initialization
+### Setup SpecSpy in Your Jest Environment
 
-First, introduce your code to `SpecSpySetup`:
+First, import SpecSpy in your Jest setup file:
 
 ```typescript
-import { SpecSpySetup } from "path/to/SpecSpy";
+import "specspy";
 ```
 
-### Pre-Game Warm-Up
+### Use in Tests
 
-Before diving into tests, let's pull in that Swagger or OpenAPI spec:
+Here's an example of how to use SpecSpy in your Jest tests:
 
 ```typescript
-let apiSpec: Record<string, any>;
+import * as testFunction from "./fixtures/testFunctions";
+import { SpecSpySetup } from "specspy";
+import { startServer } from "./fixtures/testServer";
 
-beforeAll(async () => {
-  apiSpec = await SpecSpySetup("https://path/to/swagger.yaml");
+let spec: Object;
+let server;
+
+describe("JSON API url", () => {
+  beforeAll(async () => {
+    server = startServer();
+    spec = await SpecSpySetup("http://localhost:3000/swagger.json");
+  });
+
+  afterAll(() => {
+    server.close();
+  });
+
+  test("test functions are in spec ", () => {
+    expect(testFunction.getPet).toBeApiIn(spec);
+    // ... more test functions
+  });
 });
 ```
 
-### Run the Tests
+## API Reference
 
-Your test suite gets a little more eloquent with our custom Jest matcher `toBeApiIn`:
+### `toBeApiIn`
+
+This is a custom Jest matcher that validates a function against an API specification.
 
 ```typescript
-test("Does getUser API exist?", () => {
-  expect(getUser).toBeApiIn(apiSpec);
-});
+expect(testFunction.getPet).toBeApiIn(spec);
+```
+
+### `SpecSpySetup`
+
+Utility function to set up SpecSpy with a Swagger/OpenAPI document.
+
+```typescript
+const spec = await SpecSpySetup("http://localhost:3000/swagger.json");
 ```
 
 ## Contributing
 
-Got thoughts? A haiku of code improvements? 🌸 Open a PR, but do glance at those contributing guidelines, will ya?
+If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
 
 ## License
 
-MIT Licensed. For the finer print, take a look at the `LICENSE` file.
+MIT © Your Name
 
-## Contact & Support
+---
 
-Questions, queries, quandaries? Open an issue or reach out. We're all 👂.
-
-Bring SpecSpy into your project and make your APIs harmonize like a boy band. 🎵
+This is just a basic README template. Feel free to customize it according to your needs.
