@@ -12,7 +12,7 @@
     "url": "https://github.com/hextobin/Spec-Spy.git"
   },
   "license": "MIT",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "test": "jest",
     "build": "rm -rf ./dist && tsc && cp .license ./dist"

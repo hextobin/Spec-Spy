@@ -49,6 +49,48 @@ describe("Pet functions", () => {
 });
 ```
 
+## Query Matching
+
+### Overview
+
+Spec-Spy has a unique feature that allows you to validate functions intended for querying data. This is particularly useful for POST routes in your Swagger/OpenAPI spec that are not conventional CRUD operations. The method is prefixed with "query" to indicate its special nature.
+
+### How It Works
+
+When you define a function with the name prefixed by "query," such as `queryPet`, Spec-Spy looks for a corresponding POST route in the Swagger/OpenAPI spec. For example, with a function named `queryPet`, Spec-Spy expects to find a POST route with the path `/queryPet` in the spec.
+
+### Example Usage
+
+Here's how you can define and test a "query" function:
+
+```typescript
+const queryPet = () => {
+  // Your implementation here
+};
+
+// In your test file
+describe("Query functions", () => {
+  test("are in spec", () => {
+    expect(queryPet).toBeApiIn(spec);
+  });
+});
+```
+
+### Future-Proofing
+
+Spec-Spy is designed to adapt to future changes in HTTP methods or API guidelines. If the "query" verb is ever officially adopted, either by the IETF or within your organization's API guidelines, Spec-Spy will automatically look for a "query" verb in the spec. Your existing tests will remain valid without any changes.
+
+For instance, if the "query" verb becomes official, Spec-Spy would then look for a "query" verb under `/Pet` in your Swagger/OpenAPI spec, while still recognizing `/queryPet` POST routes for backward compatibility.
+
+```typescript
+// Your test remains the same before and after IETF adoption
+describe("Query functions", () => {
+  test("are in spec", () => {
+    expect(queryPet).toBeApiIn(spec);
+  });
+});
+```
+
 ## API Reference
 
 ### `toBeApiIn`
@@ -59,7 +101,7 @@ This is a custom Jest matcher that validates a function against an API specifica
 expect(testFunction.getPet).toBeApiIn(spec);
 ```
 
-### `Spec-SpySetup`
+### `SpecSpySetup`
 
 Utility function to set up Spec-Spy with a Swagger/OpenAPI document.
 
