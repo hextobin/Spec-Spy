@@ -1,12 +1,30 @@
 {
   "name": "spec-spy",
+  "description": "A utility for Jest testing RESTful functions against an OpenAPI spec",
+  "keywords": [
+    "swagger",
+    "testing",
+    "Jest",
+    "API"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hextobin/Spec-Spy.git"
+  },
+  "license": "MIT",
   "version": "1.0.0",
   "scripts": {
     "test": "jest",
-    "build": "rm -rf ./dist && tsc && cp types/customMatcher.d.ts dist/customMatcher.d.ts"
+    "build": "rm -rf ./dist && tsc"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "peerDependencies": {
+    "jest": "^27.0.0"
+  },
   "dependencies": {
     "js-yaml": "^4.1.0"
   },

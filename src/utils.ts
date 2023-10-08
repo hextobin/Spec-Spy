@@ -58,6 +58,16 @@ export const getSpecsheet = async (
 };
 
 // Function to set up SpecSpy by fetching the Swagger spec
+/**
+ * Asynchronously sets up SpecSpy by fetching the Swagger specification from a given address.
+ *
+ * @param {string} specAddress - The URL of the Swagger specification, either in JSON or YAML format.
+ * @returns {Promise<Record<string, any>>} A promise that resolves to the Swagger specification as an object.
+ * @throws Will throw an error if the Swagger specification cannot be fetched or parsed.
+ *
+ * @example
+ * const spec = await SpecSpySetup('http://localhost:3000/swagger.json');
+ */
 export const SpecSpySetup = async (
   specAddress: string
 ): Promise<Record<string, any>> => {
