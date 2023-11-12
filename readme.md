@@ -2,7 +2,25 @@
 
 ## Overview
 
-Spec-Spy is a testing utility to extend Jest with a custom matcher. With Spec-Spy, you can easily validate that your functions match your API spec as described in an exposed Swagger/OpenAPI document. This library supports both JSON and YAML formats.
+In the realm of software development, aligning application functions with API specifications and RESTful standards is a critical yet challenging task. This process is not only about meeting API schema requirements but also about adhering to RESTful naming conventions, which is essential for creating intuitive and maintainable APIs. Spec-Spy is designed to address these challenges by offering a seamless integration with Jest, enabling developers to ensure both specification compliance and RESTful standard adherence in their applications.
+
+### Problem
+
+Developers often struggle with two main issues when integrating their application functions with an API:
+
+1. **Specification Compliance**: Ensuring that application functions strictly adhere to the defined API specifications, especially when using Swagger/OpenAPI documents. This compliance is crucial for maintaining consistency and reliability in software applications but can be labor-intensive and error-prone.
+
+2. **RESTful Standards Adherence**: Maintaining RESTful standards in function naming and design, such as using semantically clear names like `getPet`, `postPet`, `putPet`, etc. This practice is vital for creating readable and easily understandable code but often gets overlooked in the complexity of development.
+
+### Solution
+
+Spec-Spy offers a comprehensive solution to these problems. As an extension to Jest, it allows developers to:
+
+1. **Automatically Validate API Specification Compliance**: Spec-Spy validates that your functions match your API spec as described in Swagger/OpenAPI documents. It supports both JSON and YAML formats, ensuring broad compatibility and ease of use.
+
+2. **Enforce RESTful Naming Conventions**: With Spec-Spy, functions are required to be named semantically, in line with RESTful standards. This feature encourages developers to follow best practices in API design, leading to more intuitive and maintainable codebases.
+
+By automating these validation processes, Spec-Spy significantly reduces the time and effort involved in manual checks, while enhancing the accuracy and reliability of your application. It is easy to integrate with existing Jest environments and supports a wide range of HTTP verbs, making it a versatile and indispensable tool for modern development projects.
 
 ## Features
 
